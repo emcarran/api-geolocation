@@ -1,7 +1,7 @@
-$(document).ready(function () {
+/*$(document).ready(function () {
 
     /* Update all the parameters for the API test*/
-    var params = {
+/*var params = {
         key: 'mzjLtladPkAFANEEharRcAvY1h4ev9vo',
         tagged: 'html',
         site: 'mapquest',
@@ -18,7 +18,7 @@ $(document).ready(function () {
                 url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=" + pos.lat + "," + pos.lng,
                 type: "GET"
             })
-            /* if the call is successful (status 200 OK) show results */
+            //if the call is successful (status 200 OK) show results
             .done(function (result) {
                 console.log(pos);
                 console.log(result.searchResults);
@@ -41,23 +41,72 @@ $(document).ready(function () {
                 });
             })
 
-
-
-        /* if the call is NOT successful show errors */
+        //if the call is NOT successful show errors
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
             console.log(errorThrown);
         });
     });
-    /*function geocode(place, callback) {
-        var url = 'http://open.mapquestapi.com/search?format=json&q=' + encodeURIComponent(place);
-        // requires jquery for ajax
-        jQuery.getJSON(url, function(data) {
-            if (data.length > 0) {
-                callback(null, { lon: parseFloat(data[0].lon), lat: parseFloat(data[0].lat) })
-            } else {
-                callback(null, null)
-            }
-        });*/
+
 });
+*/
+
+var app = angular.module('myApp', ["ngGeolocation"]);
+
+app.controller('geolocCtrl', ['$geolocation', '$scope', function ($geolocation, $scope) {
+    $geolocation.getCurrentPosition({
+        timeout: 60000
+    }).then(function (position) {
+        $scope.myPosition = position;
+        console.log($scope.myPosition);
+    });
+}]);
+
+app.controller("attractionsController", attractionsController);
+
+attractionsController.$inject = ['$scope', '$http', '$timeout']
+
+function attractionsController($scope, $http) {
+    $scope.searchResults = [];
+    $scope.isSearching = false;
+    $scope.searchList = 0;
+
+    $scope.search = function () {
+        $scope.submit = function () {
+            $scope.isSearching = true;
+        }
+
+        $http({
+                method: "GET",
+                url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=" + pos.lat + "," + pos.lng,
+                params: {
+                    key: "mzjLtladPkAFANEEharRcAvY1h4ev9vo",
+                    text: $scope.searchPlace,
+                    format: "json",
+                    per_page: 10,
+                    tagged: "html",
+                    site: "MapQuest",
+                    order: "desc",
+                    sort: "creation"
+                }
+
+            })
+            .success(function (data) {
+                $scope.searchResults = data;
+                console.log(data);
+                /*$scope.isSearching = false;
+                // helper function called
+                $scope.searchList = data.photos.total;
+                console.log(data);
+                */
+
+
+            }),
+            function (error) {
+                console.log('error!');
+                $scope.isSearching = true;
+            };
+
+    };
+};
