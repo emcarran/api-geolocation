@@ -1,4 +1,4 @@
-/*
+/*THIS FILE CURRENTLY NOT IN USE
 angular.module('travelLibrary', [])
 
 var lat = -33.8688
