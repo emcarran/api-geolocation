@@ -25,12 +25,13 @@ function attractionsController($scope, $http) {
         }
 
         $http({
-                method: "GET",
-                url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=39.750307,-104.999472",
-                //url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=" + geolocatedPosition,
-                params: {}
-            })
-            .success(function (data) {
+            method: "GET",
+            //url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=39.750307,-104.999472",
+            url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=" + geolocatedPosition,
+            params: {}
+        })
+
+        .success(function (data) {
                 if (data.resultsCount > 0) {
                     $scope.searchResults = data.searchResults;
                 } else {
