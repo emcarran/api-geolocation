@@ -16,6 +16,7 @@
         var map;
         var infowindow;
         var pos;
+        var geolocatedPosition;
 
         function initAutocomplete() {
             // creating new google map with center and zooom
@@ -72,6 +73,10 @@
                 };
                 searchBox.setBounds(map.getBounds());
             });
+
+            var geolocatedPosition = map.getCenter().lat() + "," + map.getCenter().lng();
+
+
             var markers = [];
             // Listen for the event fired when the user selects a prediction and retrieve
             // more details for that place
@@ -148,7 +153,10 @@
                 types: [serviceType]
             }, callback);
         }
+        console.log(geolocatedPosition);
         $(document).ready(function () {
+
+
             //search nearby points of interest automatically
             //searchLocations("school");
 
@@ -169,31 +177,27 @@
             <div class="col-md-6">
                 <br>
                 <br>
-                <form ng-submit="search()" novalidate>
+                <form ng-submit="search(geolocatedPosition)" novalidate>
                     <div class="overlay">
-                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search Box" ng-hide="isSearching" required/>
+                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search Box" ng-hide="isSearching" required value="starbucks" />
                         <input type="hidden" value="+" id="searchAddress">
                     </div>
                     <div id="map"></div>
+                </form>
             </div>
-            </form>
+
 
             <div class="col-md-6">
-                <div class='search-container'>
-                    <h1>Search Local Attractions</h1>
-                    <section class='search-local'>
-                        <button id='search-button' type='submit' value="Submit">Go!</button>
-                    </section>
-                </div>
-
                 <!--search list results-->
                 <div class="search-list">
                     <!--use ng-repeat to to display the search list (results)-->
                     <ul id="search-details">
-                        <p>Attractions: {{searchList}}</p>
-                        <p>{{place.name}}</p>
-                    </ul>
+                        <li ng-repeat="result in searchResults">
+                            <h3><b>{{ result.fields.name }}</b> - {{ result.fields.group_sic_code_name}}</h3>
+                            <p>{{ result.fields.address }}, {{ result.fields.city }}, {{ result.fields.state }}, {{ result.fields.postal_code }}, {{ result.fields.phone }}</p>
 
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
