@@ -18,17 +18,13 @@ function attractionsController($scope, $http) {
     $scope.isSearching = false;
     $scope.searchList = 0;
 
-    $scope.search = function (geolocatedPosition) {
+    $scope.search = function () {
 
-        $scope.submit = function () {
-            $scope.isSearching = true;
-        }
 
         $http({
             method: "GET",
             //url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=39.750307,-104.999472",
             url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=" + geolocatedPosition,
-            params: {}
         })
 
         .success(function (data) {
@@ -45,4 +41,10 @@ function attractionsController($scope, $http) {
                 console.log('Api call returns nothing');
             };
     };
+
+    //submit function goes outside of the searh function
+    $scope.submit = function () {
+        $scope.search();
+        $scope.isSearching = true;
+    }
 };

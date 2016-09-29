@@ -64,19 +64,23 @@
                     $('div.gm-style #addressInput').wrap('<div id="addressInputHolder" />');
                 }
             });
-            // Bias the SearchBox results towards current map's viewport.
-            map.addListener('bounds_changed', function () {
-                // update the pos based on the search result
 
+            // Bias the SearchBox results towards current map's viewport
+            map.addListener('bounds_changed', function () {
+
+                // update the pos based on the search result
                 pos = {
                     lat: map.getCenter().lat(),
                     lng: map.getCenter().lng()
                 };
+
                 searchBox.setBounds(map.getBounds());
+
+                //include my variable geolocatedPosition inside map.addListener
+                geolocatedPosition = map.getCenter().lat() + "," + map.getCenter().lng();
+                console.log(geolocatedPosition);
             });
 
-            var geolocatedPosition = map.getCenter().lat() + "," + map.getCenter().lng();
-            console.log(geolocatedPosition);
 
             var markers = [];
             // Listen for the event fired when the user selects a prediction and retrieve
@@ -180,7 +184,7 @@
                 <br>
                 <form ng-submit="search(geolocatedPosition)" novalidate>
                     <div class="overlay">
-                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search Box" ng-hide="isSearching" required value="starbucks" />
+                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search Box" ng-hide="isSearching" />
                         <input type="hidden" value="+" id="searchAddress">
                     </div>
                     <div id="map"></div>
