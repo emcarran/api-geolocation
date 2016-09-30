@@ -184,7 +184,7 @@
                 <br>
                 <form ng-submit="search(geolocatedPosition)" novalidate>
                     <div class="overlay">
-                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search Box" ng-hide="isSearching" />
+                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Location Search" ng-hide="isSearching" />
                         <input type="hidden" value="+" id="searchAddress">
                     </div>
                     <div id="map"></div>
@@ -197,7 +197,7 @@
                 <div class="search-list">
                     <!--use ng-repeat to to display the search list (results)-->
                     <ul id="search-details">
-                        <!--<h2>search results:</h2>-->
+                        <!--<h2>results found:</h2>-->
                         <li ng-repeat="result in searchResults">
                             <h3><b>{{ result.fields.name }}</b> - {{ result.fields.group_sic_code_name}}</h3>
                             <p>{{ result.fields.address }}, {{ result.fields.city }}, {{ result.fields.state }}, {{ result.fields.postal_code }}, {{ result.fields.phone }}</p>
