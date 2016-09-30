@@ -176,7 +176,7 @@
     </script>
 </head>
 
-<body ng-controller="attractionsController as myCtrl">
+<body ng-controller="searchController as myCtrl">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -197,6 +197,7 @@
                 <div class="search-list">
                     <!--use ng-repeat to to display the search list (results)-->
                     <ul id="search-details">
+                        <!--<h2>search results:</h2>-->
                         <li ng-repeat="result in searchResults">
                             <h3><b>{{ result.fields.name }}</b> - {{ result.fields.group_sic_code_name}}</h3>
                             <p>{{ result.fields.address }}, {{ result.fields.city }}, {{ result.fields.state }}, {{ result.fields.postal_code }}, {{ result.fields.phone }}</p>

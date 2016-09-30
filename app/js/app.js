@@ -9,11 +9,11 @@ app.controller('geolocCtrl', ['$geolocation', '$scope', function ($geolocation, 
     });
 }]);
 
-app.controller("attractionsController", attractionsController);
+app.controller("searchController", searchController);
 
-attractionsController.$inject = ['$scope', '$http', '$timeout']
+searchController.$inject = ['$scope', '$http', '$timeout']
 
-function attractionsController($scope, $http) {
+function searchController($scope, $http) {
     $scope.searchResults = [];
     $scope.isSearching = false;
     $scope.searchList = 0;
@@ -24,7 +24,8 @@ function attractionsController($scope, $http) {
         $http({
             method: "GET",
             //url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=39.750307,-104.999472",
-            url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=4&origin=" + geolocatedPosition,
+            url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=6&origin=" + geolocatedPosition,
+            //url: "http://www.mapquestapi.com/search/v3/prediction?collection=address%2CadminArea%2Cairport&limit=10&q=den&key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&location=" + geolocatedPosition,
         })
 
         .success(function (data) {
