@@ -12,7 +12,7 @@ function searchController($scope, $http) {
     // when enter in clicked on the form, this funcion is called
     $scope.search = function (position) {
         // make request to MapQuest api
-        $https({
+        $http({
                 method: "GET",
                 url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=5&origin=" + pos.lat + "," + pos.lng
             })
