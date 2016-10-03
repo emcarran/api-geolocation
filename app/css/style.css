@@ -25,7 +25,7 @@ CSS reset (all the browsers will see the website in the same way by setting ever
 
 body {
     background-color: lightgray;
-    color: darkred;
+    color: purple;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -99,5 +99,5 @@ h4 {
     padding-top: 10px;
     font-style: initial;
     font-family: cursive;
-    color: darkred;
+    color: purple;
 }
