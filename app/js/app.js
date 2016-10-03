@@ -24,7 +24,6 @@ function searchController($scope, $http) {
                     console.log($scope.searchResults);
                     // show the places fund label;
                     $scope.showPlaces = true;
-
                 } else {
                     alert("Api call returns 200 but no results");
                 }
