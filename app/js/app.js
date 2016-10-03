@@ -14,7 +14,7 @@ function searchController($scope, $http) {
         // make request to MapQuest api
         $http({
                 method: "GET",
-                url: "http://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=5&origin=" + pos.lat + "," + pos.lng
+                url: "https://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=5&origin=" + pos.lat + "," + pos.lng
             })
             // upon success, update search results and display label
             .success(function (data) {
