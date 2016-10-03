@@ -2,8 +2,9 @@
 <html ng-app="myApp">
 
 <head>
-    <title>Travel Bug</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>Nearby Places</title>
+    <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- load jQuery and bootstrap-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
     <script src='js/geolocate.js' type='text/javascript'></script>
@@ -16,7 +17,6 @@
         var map;
         var infowindow;
         var pos;
-        var geolocatedPosition;
 
         function initAutocomplete() {
             // creating new google map with center and zooom
@@ -28,6 +28,7 @@
                 zoom: 18,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+
             // creating new info window for the map
             infowindow = new google.maps.InfoWindow({
                 map: map
@@ -67,20 +68,13 @@
 
             // Bias the SearchBox results towards current map's viewport
             map.addListener('bounds_changed', function () {
-
                 // update the pos based on the search result
                 pos = {
                     lat: map.getCenter().lat(),
                     lng: map.getCenter().lng()
                 };
-
                 searchBox.setBounds(map.getBounds());
-
-                //include my variable geolocatedPosition inside map.addListener
-                geolocatedPosition = map.getCenter().lat() + "," + map.getCenter().lng();
-                console.log(geolocatedPosition);
             });
-
 
             var markers = [];
             // Listen for the event fired when the user selects a prediction and retrieve
@@ -158,13 +152,8 @@
                 types: [serviceType]
             }, callback);
         }
-        console.log(geolocatedPosition);
+
         $(document).ready(function () {
-
-
-            //search nearby points of interest automatically
-            //searchLocations("school");
-
             //search nearby points of interest using the input box
             $('.overlay').on('click', '#searchAddress', function () {
                 event.preventDefault();
@@ -177,31 +166,38 @@
 </head>
 
 <body ng-controller="searchController as myCtrl">
-    <div class="container">
+
+    <header class="container">
+        <div class="Instructions">
+            <h1 class="heading">
+            <span>Nearby Places</span>
+        </h1>
+            <h4>This app finds your current location and retrieves nearby places when you press enter on the searchbox. You can also find nearby places based on an address or city and state. Go ahead and give it a try!</h4>
+        </div>
+    </header>
+
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
                 <br>
                 <br>
-                <form ng-submit="search(geolocatedPosition)" novalidate>
+                <form ng-submit="search(pos)" novalidate>
                     <div class="overlay">
-                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Location Search" ng-hide="isSearching" />
-                        <input type="hidden" value="+" id="searchAddress">
+                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search for Places" />
                     </div>
                     <div id="map"></div>
                 </form>
             </div>
 
-
             <div class="col-md-6">
                 <!--search list results-->
                 <div class="search-list">
-                    <!--use ng-repeat to to display the search list (results)-->
+                    <h2 ng-show="showPlaces">Places Found:</h2>
                     <ul id="search-details">
-                        <!--<h2>results found:</h2>-->
+                        <!--use ng-repeat to to display the search list (results)-->
                         <li ng-repeat="result in searchResults">
                             <h3><b>{{ result.fields.name }}</b> - {{ result.fields.group_sic_code_name}}</h3>
                             <p>{{ result.fields.address }}, {{ result.fields.city }}, {{ result.fields.state }}, {{ result.fields.postal_code }}, {{ result.fields.phone }}</p>
-
                         </li>
                     </ul>
                 </div>
@@ -211,7 +207,6 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7buZcMEjcjwpMa8qztndpYmCxxP-Te2A&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
     <script src='js/app.js' type='text/javascript'></script>
-
 
 </body>
 

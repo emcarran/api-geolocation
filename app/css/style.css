@@ -1,16 +1,70 @@
-/*styles go here*/
-
-html,
-#map {
-    height: 500px;
-    width: 500px;
-}
-
-
-/*.container {
-    margin-left: 10px;
-}
+/* -------------------------------------
+CSS reset (all the browsers will see the website in the same way by setting every tag to 0 (the website will look the same on all browsers))
 */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+    box-sizing: border-box;
+    /*reset Chrome user agent styles*/
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+}
+
+
+/*General styles go here*/
+
+body {
+    background-color: lightgray;
+    color: darkred;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.heading {
+    text-align: center;
+    text-shadow: 4px 4px lightgray;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+.Instructions {
+    border-image-outset: initial;
+    border-style: ridge;
+    border-color: darkgrey;
+}
+
+h2 {
+    margin-left: 30px;
+    padding-top: 20px;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+h4 {
+    font-family: cursive;
+    font-size: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+#map {
+    height: 460px;
+    width: 640px;
+    border-width: 5rem;
+    border-color: lightgreen;
+}
 
 #addressInputHolder {
     position: relative!important;
@@ -30,14 +84,20 @@ html,
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
     width: 300px;
+    color: black;
 }
 
 #addressInput:focus {
     border-color: #4d90fe;
 }
 
+#search-list {
+    margin-top: 10px;
+}
+
 #search-details {
-    padding-top: 20px;
-    font-style: normal;
-    color: darkblue;
+    padding-top: 10px;
+    font-style: initial;
+    font-family: cursive;
+    color: darkred;
 }

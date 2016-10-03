@@ -1,3 +1,4 @@
+//This code is the angular code making the connection with the HTML5 geolocation code
 (function () {
     'use strict';
 
