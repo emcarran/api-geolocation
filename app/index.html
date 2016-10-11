@@ -194,6 +194,8 @@
                 <div class="search-list">
                     <h2 ng-show="showPlaces">Places Found:</h2>
                     <h2 ng-show="noPlaces">Sorry, no results found!</h2>
+                    <h2 ng-show="apiError">Sorry, there is an error!</h2>
+
                     <ul id="search-details">
                         <!--use ng-repeat to to display the search list (results)-->
                         <li ng-repeat="result in searchResults">

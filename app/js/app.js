@@ -11,6 +11,8 @@ function searchController($scope, $http) {
     $scope.showPlaces = false;
     // the no places found label is also initially hidden
     $scope.noPlaces = false;
+    // the api Error label is also initially hidden
+    $scope.apiError = false;
     // when enter in clicked on the form, this funcion is called
     $scope.search = function (position) {
         // make request to MapQuest api
@@ -30,12 +32,18 @@ function searchController($scope, $http) {
                     $scope.showPlaces = false;
                     $scope.searchResults = "";
                     $scope.noPlaces = true;
+                    $scope.apiError = false;
                     console.log("Api call has been made successfully, but there are no results");
                 }
-            }),
+            })
 
-            function (error) {
-                console.log('Api call returns nothing');
-            };
+        .error(function (data, status, headers, config) {
+            $scope.showPlaces = false;
+            $scope.searchResults = "";
+            $scope.noPlaces = false;
+            $scope.apiError = true;
+            console.log(status + " error attempting to access MapQuest");
+
+        });
     };
 };
