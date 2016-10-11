@@ -9,6 +9,8 @@ function searchController($scope, $http) {
     $scope.searchResults = [];
     // the places found label  is intially hidden
     $scope.showPlaces = false;
+    // the no places found label is also initially hidden
+    $scope.noPlaces = false;
     // when enter in clicked on the form, this funcion is called
     $scope.search = function (position) {
         // make request to MapQuest api
@@ -22,10 +24,13 @@ function searchController($scope, $http) {
                     // once you get the search results, update the search result array
                     $scope.searchResults = data.searchResults;
                     console.log($scope.searchResults);
-                    // show the places fund label;
+                    // show the places found label;
                     $scope.showPlaces = true;
                 } else {
-                    alert("Api call returns 200 but no results");
+                    $scope.showPlaces = false;
+                    $scope.searchResults = "";
+                    $scope.noPlaces = true;
+                    console.log("Api call has been made successfully, but there are no results");
                 }
             }),
 
