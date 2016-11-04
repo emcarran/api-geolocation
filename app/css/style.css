@@ -62,7 +62,7 @@ body {
 .heading {
     text-align: center;
     text-shadow: 4px 4px lightgray;
-    font-family: cursive;
+    font-family: 'Neuton', serif;
     font-weight: bold;
 }
 
@@ -74,13 +74,13 @@ body {
 
 h2 {
     padding-top: 20px;
-    font-family: cursive;
-    font-weight: bold;
+    font-family: 'Neuton', serif;
+    /*font-weight: bold;*/
     color: darkgreen;
 }
 
 h4 {
-    font-family: cursive;
+    font-family: 'Neuton', serif;
     font-size: 2rem;
     padding-left: 5rem;
     padding-right: 5rem;
@@ -125,6 +125,6 @@ h4 {
 #search-details {
     padding-top: 10px;
     font-style: initial;
-    font-family: cursive;
+    font-family: 'Neuton', serif;
     color: darkgreen;
 }

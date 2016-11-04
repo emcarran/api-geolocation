@@ -13,7 +13,7 @@ function searchController($scope, $http) {
     $scope.noPlaces = false;
     // the api Error label is also initially hidden
     $scope.apiError = false;
-    // when enter in clicked on the form, this funcion is called
+    // when enter is clicked on the form, this funcion is called
     $scope.search = function (position) {
         // make request to MapQuest api
         $http({

@@ -10,6 +10,7 @@
     <script src='js/geolocate.js' type='text/javascript'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Neuton" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <meta charset="utf-8">
 
@@ -184,6 +185,15 @@
                 <form ng-submit="search(pos)" novalidate>
                     <div class="overlay">
                         <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search for Places" />
+                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search for Places" />
+                        <select ng-model="searchPlace" id="addressInput">
+                            <option value="airport">Airport</option>
+                            <option value="museum">Museum</option>
+                            <option value="shopping_mall">Shopping Mall</option>
+                            <option value="lodging">Lodging</option>
+                        </select>
+
+                        <input type="submit" value="search" />
                     </div>
                     <div id="map"></div>
                 </form>
