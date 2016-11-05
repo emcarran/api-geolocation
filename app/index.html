@@ -182,21 +182,28 @@
             <div class="col-md-6">
                 <br>
                 <br>
-                <form ng-submit="search(pos)" novalidate>
+                <!--                <form ng-submit="search(pos)" novalidate>-->
+                <form novalidate>
                     <div class="overlay">
                         <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search for Places" />
-                        <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search for Places" />
-                        <select ng-model="searchPlace" id="addressInput">
-                            <option value="airport">Airport</option>
-                            <option value="museum">Museum</option>
-                            <option value="shopping_mall">Shopping Mall</option>
-                            <option value="lodging">Lodging</option>
-                        </select>
-
-                        <input type="submit" value="search" />
                     </div>
-                    <div id="map"></div>
+                    <input type="submit" ng-click="search(pos)" value="search" />
+
                 </form>
+                <form novalidate>
+                    <select ng-model="searchList" id="addressInput" ng-hide="hideList">
+                        <!--                    <select ng-model="searchList" ng-bind="searchPlace" id="addressInput" ng-hide="hideList">-->
+                        <option value="London Heathrow Airport">London Heathrow Airport</option>
+                        <option value="museum">Museum</option>
+                        <option value="shopping_mall">Shopping Mall</option>
+                        <option value="lodging">Lodging</option>
+                    </select>
+                    <input type="submit" ng-click="search(pos)" value="search" />
+
+                </form>
+
+                <div id="map"></div>
+
             </div>
 
             <div class="col-md-6">

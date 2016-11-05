@@ -13,6 +13,8 @@ function searchController($scope, $http) {
     $scope.noPlaces = false;
     // the api Error label is also initially hidden
     $scope.apiError = false;
+    // the list is initialy hidden
+    $scope.hideList = true;
     // when enter is clicked on the form, this funcion is called
     $scope.search = function (position) {
         // make request to MapQuest api
@@ -28,6 +30,7 @@ function searchController($scope, $http) {
                     console.log($scope.searchResults);
                     // show the places found label;
                     $scope.showPlaces = true;
+                    $scope.hideList = false;
                 } else {
                     $scope.showPlaces = false;
                     $scope.searchResults = "";

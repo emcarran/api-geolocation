@@ -52,7 +52,7 @@ CSS reset (all the browsers will see the website in the same way by setting ever
 
 body {
     background-color: lightgray;
-    color: purple;
+    color: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -75,8 +75,8 @@ body {
 h2 {
     padding-top: 20px;
     font-family: 'Neuton', serif;
-    /*font-weight: bold;*/
-    color: darkgreen;
+    font-weight: bold;
+    color: black;
 }
 
 h4 {
@@ -126,5 +126,5 @@ h4 {
     padding-top: 10px;
     font-style: initial;
     font-family: 'Neuton', serif;
-    color: darkgreen;
+    color: black;
 }
