@@ -16,11 +16,12 @@ function searchController($scope, $http) {
     // the list is initialy hidden
     $scope.hideList = true;
     // when enter is clicked on the form, this funcion is called
-    $scope.search = function (position) {
+    $scope.search = function (position, text) {
+        console.log(text);
         // make request to MapQuest api
         $http({
                 method: "GET",
-                url: "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection=airport&location="+ pos.lng + "," + pos.lat+"&q=san"
+                url: "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection=airport&location="+ pos.lng + "," + pos.lat+"&q="+text
 
             })
             // upon success, update search results and display label
