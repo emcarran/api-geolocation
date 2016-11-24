@@ -52,3 +52,4 @@ function searchController($scope, $http) {
         });
     };
 };
+
