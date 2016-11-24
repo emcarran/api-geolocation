@@ -20,14 +20,16 @@ function searchController($scope, $http) {
         // make request to MapQuest api
         $http({
                 method: "GET",
-                url: "https://www.mapquestapi.com/search/v2/radius?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&maxMatches=5&origin=" + pos.lat + "," + pos.lng
+                url: "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection=airport&location="+ pos.lng + "," + pos.lat+"&q=san"
+
             })
             // upon success, update search results and display label
             .success(function (data) {
-                if (data.resultsCount > 0) {
+            console.log(data);
+                if (data.results.length > 0) {
                     // once you get the search results, update the search result array
-                    $scope.searchResults = data.searchResults;
-                    console.log($scope.searchResults);
+                    $scope.searchResults = data.results;
+                    console.log($scope.results);
                     // show the places found label;
                     $scope.showPlaces = true;
                     $scope.hideList = false;

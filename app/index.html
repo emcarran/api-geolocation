@@ -216,8 +216,8 @@
                     <ul id="search-details">
                         <!--use ng-repeat to to display the search list (results)-->
                         <li ng-repeat="result in searchResults">
-                            <h3><b>{{ result.fields.name }}</b> - {{ result.fields.group_sic_code_name}}</h3>
-                            <p>{{ result.fields.address }}, {{ result.fields.city }}, {{ result.fields.state }}, {{ result.fields.postal_code }}, {{ result.fields.phone }}</p>
+                            <h3><b>{{ result.name }}</b> - {{ result.place.properties.postalCode}}</h3>
+                            <p>{{ result.place.properties }}, {{ result.fields.city }}, {{ result.fields.state }}, {{ result.fields.postal_code }}, {{ result.fields.phone }}</p>
                         </li>
                     </ul>
                 </div>
