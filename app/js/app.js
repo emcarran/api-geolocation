@@ -21,11 +21,18 @@ function searchController($scope, $http) {
         // make request to MapQuest api
         $http({
                 method: "GET",
-                url: "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection"+collection+"&location="+ pos.lng + "," + pos.lat+"&q="+text
+                url: "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection=airport&location="+ pos.lng + "," + pos.lat+"&q=air"
+            
+//                http://www.mapquestapi.com/search/v3/prediction?key=KEY&collection=adminArea,poi,address,category,franchise,airport&q=den
 
+            //            "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection=address,category,franchise,airport&location="+ pos.lng + "," + pos.lat+"&q="+text            
+//              +collection
+//              http://www.mapquestapi.com/search/v3/prediction?key=KEY&collection=adminArea,poi,address,category,franchise,airport&q=den
             })
+        
             // upon success, update search results and display label
             .success(function (data) {
+            console.log(pos);
             console.log(data);
                 if (data.results.length > 0) {
                     // once you get the search results, update the search result array
