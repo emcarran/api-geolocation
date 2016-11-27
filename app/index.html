@@ -59,7 +59,7 @@
             // Create the search box and link it to the UI element.
             var input = document.getElementById('addressInput');
             var searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+//            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
             //hack control position
             google.maps.event.addDomListener(map, 'tilesloaded', function () {
                 if ($('#addressInputHolder').length == 0) {
@@ -186,9 +186,14 @@
                 <form novalidate name="yo" ng-submit="search(pos, searchPlace)">
                     <div class="overlay">
                         <input ng-model="searchPlace" type="text" id="addressInput" size="10" value="" placeholder="Search for Places"  />
-                        <input type="submit"  value="search it!"/>
+                        <input type="submit"  value="search it!" id="submitSearch"/>
                     </div>
 
+                </form>
+                <form>
+                <div class="collection-airport" ng-submit="search(collection)">
+                    <input type="submit" value="search airports" id="submitAirport"/>
+                </div>
                 </form>
                 <div id="map"></div>
 

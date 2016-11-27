@@ -99,23 +99,46 @@ h4 {
 
 #addressInputHolder input {
     width: 250px!important;
-    margin-top: 10px;
+/*    margin-top: 10px;*/
     padding-top: 3px;
+}
+
+form {
+    display: inline-block;
 }
 
 #addressInput {
     background-color: #fff;
     font-size: 15px;
     font-weight: 300;
-    margin-left: 12px;
+/*    margin-left: 12px;*/
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
     width: 300px;
     color: black;
+    margin-bottom: 15px;
+    margin-right: 5px;
 }
 
 #addressInput:focus {
     border-color: #4d90fe;
+}
+
+#submitSearch {
+    width: 75px;
+    height: 25px;
+    border-radius: 5px; 
+}
+
+.collection-airport {
+    display: inline-block;
+    margin-left: 100px;
+}
+
+#submitAirport {
+    width: 110px;
+    height: 25px;
+    border-radius: 5px;
 }
 
 #search-list {
