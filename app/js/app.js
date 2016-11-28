@@ -21,9 +21,7 @@ function searchController($scope, $http) {
         // make request to MapQuest api
         $http({
                 method: "GET",
-                url: "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection=airport&location="+ pos.lng + "," + pos.lat+"&q=air"
-            
-//                http://www.mapquestapi.com/search/v3/prediction?key=KEY&collection=adminArea,poi,address,category,franchise,airport&q=den
+                url: "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection=adminArea,address,category,franchise,airport&limit=5&location="+ pos.lng + "," + pos.lat+"&q="+text+"&countryCode=US"      
 
             //            "http://www.mapquestapi.com/search/v3/prediction?key=mzjLtladPkAFANEEharRcAvY1h4ev9vo&collection=address,category,franchise,airport&location="+ pos.lng + "," + pos.lat+"&q="+text            
 //              +collection
@@ -51,6 +49,10 @@ function searchController($scope, $http) {
             })
 
         .error(function (data, status, headers, config) {
+            console.log(data);
+            console.log(status);
+            console.log(headers);
+            console.log(config);
             $scope.showPlaces = false;
             $scope.searchResults = "";
             $scope.noPlaces = false;

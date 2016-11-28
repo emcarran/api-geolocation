@@ -191,11 +191,13 @@
                     </div>
 
                 </form>
+<!--
                 <form>
                 <div class="collection-airport" ng-submit="search(collection)">
                     <input type="submit" value="search airports" id="submitAirport"/>
                 </div>
                 </form>
+-->
                 <div id="map"></div>
 
             </div>
@@ -209,8 +211,8 @@
                     <ul id="search-details">
                         <!--use ng-repeat to to display the search list (results)-->
                         <li ng-repeat="result in searchResults">
-                            <h3><b>{{ result.name }}</b> - {{ result.place.properties.postalCode}}</h3>
-                            <p>{{ result.place.properties }}, {{ result.fields.city }}, {{ result.fields.state }}, {{ result.fields.postal_code }}, {{ result.fields.phone }}</p>
+                            <h3><b>{{ result.name }}</b></h3>
+                            <p>{{ result.place.properties.street}}, {{ result.place.properties.city }}, {{ result.place.properties.stateCode }} {{ result.place.properties.postalCode }}, {{ result.place.properties.countryCode }} </p>
                         </li>
                     </ul>
                 </div>
